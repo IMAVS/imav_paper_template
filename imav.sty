@@ -1,8 +1,35 @@
+%%%% imav.sty: style file of the IMAV paper template
+%
+% ========================================================================================================
+% OPTIONS: switch them on here (change ...false into ...true), or in the tex file with
+%          \usepackage[blind]{imav}, \usepackage[frame]{imav} or \usepackage[blind,frame]{imav}
+% ========================================================================================================
+\newif\ifimavblind
+\newif\ifimavframe
+%
+% blind: double-blind review. Hides the authors, their affiliations and the e-mail footnote under the title
+%        (they are replaced by "Anonymous submission for double-blind review"). Also remove anything else
+%        that identifies you yourself: acknowledgements, funding, project names, links to your own videos or
+%        code, and cite your own work in the third person. Switch it off again for the camera-ready paper.
+\imavblindfalse
+%
+% frame: draws a red box on every page around the area you may use: the part of the page that is copied
+%        into the IMAV proceedings, without the outer edges. Check that all text, figures, tables and
+%        footnotes are inside the box, then switch it off again: the submitted and camera-ready papers
+%        must not show the box. The box follows the paper size (US letter, as this template, or A4).
+\imavframefalse
+% ========================================================================================================
+%
+\DeclareOption{blind}{\imavblindtrue}
+\DeclareOption{frame}{\imavframetrue}
+\ProcessOptions\relax
+%
 % This is the style-file for the EMAV 2009 conference
 % for questions regarding the files, please contact info@emav2009.org
 % You can use this style for your conference, as long as you refer to the EMAV 2009
 % in a comment similar to this one.
 % Of course, the EMAV 2009 is not liable for any aspects of its use.
+% Since then it is the style file of the IMAV conferences; for questions, please contact info@imavs.org.
 \twocolumn \flushbottom \sloppy
 % Note that TeX has built-in 1-inch top and left margins.
 \setlength\topmargin{-0.25in}
@@ -13,7 +40,9 @@
 \setlength\columnsep{0.25in}
 \newlength\titlebox \setlength\titlebox{2.25in}
 \setlength\headheight{0pt}   \setlength\headsep{0pt}
+% No page numbers, also not on page 1 (\maketitle switches to the page style plain): the proceedings add their own
 \thispagestyle{empty}        \pagestyle{empty}
+\let\ps@plain\ps@empty
 
 \def\@maketitle{
 \vbox{
@@ -21,7 +50,12 @@
   \linewidth\hsize
   \centering \huge \textbf \@title \par
   \vskip 3mm
-  \normalsize \@author
+  \normalsize
+  \ifimavblind
+    Anonymous submission for double-blind review
+  \else
+    \@author
+  \fi
   \vskip 8mm
 }}
 
@@ -37,3 +71,26 @@
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
 {.3\baselineskip\@plus.2\baselineskip}{.2\baselineskip}
                                    {\itshape}}
+
+% The red box of the option frame: the area the authors may use. Its left and top edges are where the
+% proceedings cut the page (they place each page on an A4 page and add a header and footer); its right and
+% bottom edges are those of the two columns, as the bulk of the ink of the IMAV 2026 papers (outliers left
+% out). On a US letter page: 54 bp to 560 bp from the left edge, 35 bp to 708 bp from the top. On an A4
+% page the same area in the proceedings: 45 bp to 551 bp from the left edge, 44 bp to 762 bp from the top
+% (1 bp = 1/72 inch).
+\ifimavframe
+  \RequirePackage{color}
+  \RequirePackage{eso-pic}
+  \AddToShipoutPictureFG{%
+    \setlength\unitlength{1bp}%
+    \linethickness{0.8bp}%
+    \color{red}%
+    \ifdim\paperheight>800bp
+      \put(45,80){\framebox(506,718){}}%
+      \put(45,72){\tiny IMAV proceedings area}%
+    \else
+      \put(54,84){\framebox(506,673){}}%
+      \put(54,76){\tiny IMAV proceedings area}%
+    \fi
+  }
+\fi
