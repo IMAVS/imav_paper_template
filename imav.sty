@@ -13,10 +13,11 @@
 %        code, and cite your own work in the third person. Switch it off again for the camera-ready paper.
 \imavblindfalse
 %
-% frame: draws a red box on every page around the area you may use: the part of the page that is copied
-%        into the IMAV proceedings, without the outer edges. Check that all text, figures, tables and
+% frame: draws a red box on every page around the area you may use: the text area of 7.0 x 9.0 inch, with
+%        room below for the descenders of the last line (g, p, y). The papers are inserted into the IMAV
+%        proceedings as they are and cut around this area. Check that all text, figures, tables and
 %        footnotes are inside the box, then switch it off again: the submitted and camera-ready papers
-%        must not show the box. The box follows the paper size (US letter, as this template, or A4).
+%        must not show the box.
 \imavframefalse
 % ========================================================================================================
 %
@@ -31,6 +32,26 @@
 % Of course, the EMAV 2009 is not liable for any aspects of its use.
 % Since then it is the style file of the IMAV conferences; for questions, please contact info@imavs.org.
 \twocolumn \flushbottom \sloppy
+% The paper size is always US letter (8.5 x 11 inch), also with \documentclass[a4paper]{...}, the package
+% geometry, pdfLaTeX, LuaLaTeX, XeLaTeX or latex + dvipdfmx: the IMAV proceedings accept only US letter pages.
+\setlength\paperwidth{8.5in}
+\setlength\paperheight{11in}
+\def\imav@letter{%
+  \setlength\paperwidth{8.5in}\setlength\paperheight{11in}%
+  \ifdefined\pdfpagewidth \pdfpagewidth=8.5in \pdfpageheight=11in \fi
+  \ifdefined\pagewidth \pagewidth=8.5in \pageheight=11in \fi}
+\imav@letter
+% Again at the very end of \begin{document}, after packages such as geometry have set their own size
+\ifdefined\AddToHook
+  \AddToHook{begindocument/end}{\imav@letter}
+\else
+  \AtBeginDocument{\imav@letter}
+\fi
+% latex + dvipdfmx and XeLaTeX (DVI or XDV output): the page size of the PDF
+\newif\ifimav@dvi \imav@dvitrue
+\ifdefined\outputmode \ifnum\outputmode>0 \imav@dvifalse \fi
+\else \ifdefined\pdfoutput \ifnum\pdfoutput>0 \imav@dvifalse \fi \fi \fi
+\ifimav@dvi \AtBeginDvi{\special{papersize=8.5in,11in}}\fi
 % Note that TeX has built-in 1-inch top and left margins.
 \setlength\topmargin{-0.25in}
 \setlength\oddsidemargin{-0.25in}
@@ -72,11 +93,11 @@
 {.3\baselineskip\@plus.2\baselineskip}{.2\baselineskip}
                                    {\itshape}}
 
-% The red box of the option frame: the area the authors may use. Its left edge is where the proceedings
-% cut the page (they place each page on an A4 page and add a header and footer); its other edges are those
-% of the two columns, as the bulk of the ink of the IMAV 2026 papers (outliers left out). On a US letter
-% page: 54 bp to 560 bp from the left edge, 53 bp to 708 bp from the top. On an A4 page the same area in
-% the proceedings: 45 bp to 551 bp from the left edge, 71 bp to 762 bp from the top (1 bp = 1/72 inch).
+% The red box of the option frame: the text area of 7.0 x 9.0 inch (\textwidth x \textheight: 54 bp to 558 bp
+% from the left edge, 54 bp to 702 bp from the top; 1 bp = 1/72 inch), drawn 3 bp lower at the bottom so that
+% the descenders of the last line (g, p, y) are inside it. This matches the bulk of the ink of the IMAV 2026
+% papers. The proceedings place each page on an A4 page with their header and footer and cut it around
+% this area; the left edge is where they cut the page.
 \ifimavframe
   \RequirePackage{color}
   \RequirePackage{eso-pic}
@@ -84,12 +105,7 @@
     \setlength\unitlength{1bp}%
     \linethickness{0.8bp}%
     \color{red}%
-    \ifdim\paperheight>800bp
-      \put(45,80){\framebox(506,691){}}%
-      \put(45,72){\tiny IMAV proceedings area}%
-    \else
-      \put(54,84){\framebox(506,655){}}%
-      \put(54,76){\tiny IMAV proceedings area}%
-    \fi
+    \put(54,87){\framebox(504,651){}}%
+    \put(54,79){\tiny IMAV proceedings area: 7.0 $\times$ 9.0 inch}%
   }
 \fi
