@@ -72,12 +72,11 @@
 {.3\baselineskip\@plus.2\baselineskip}{.2\baselineskip}
                                    {\itshape}}
 
-% The red box of the option frame: the area the authors may use. Its left and top edges are where the
-% proceedings cut the page (they place each page on an A4 page and add a header and footer); its right and
-% bottom edges are those of the two columns, as the bulk of the ink of the IMAV 2026 papers (outliers left
-% out). On a US letter page: 54 bp to 560 bp from the left edge, 35 bp to 708 bp from the top. On an A4
-% page the same area in the proceedings: 45 bp to 551 bp from the left edge, 44 bp to 762 bp from the top
-% (1 bp = 1/72 inch).
+% The red box of the option frame: the area the authors may use. Its left edge is where the proceedings
+% cut the page (they place each page on an A4 page and add a header and footer); its other edges are those
+% of the two columns, as the bulk of the ink of the IMAV 2026 papers (outliers left out). On a US letter
+% page: 54 bp to 560 bp from the left edge, 53 bp to 708 bp from the top. On an A4 page the same area in
+% the proceedings: 45 bp to 551 bp from the left edge, 71 bp to 762 bp from the top (1 bp = 1/72 inch).
 \ifimavframe
   \RequirePackage{color}
   \RequirePackage{eso-pic}
@@ -86,10 +85,10 @@
     \linethickness{0.8bp}%
     \color{red}%
     \ifdim\paperheight>800bp
-      \put(45,80){\framebox(506,718){}}%
+      \put(45,80){\framebox(506,691){}}%
       \put(45,72){\tiny IMAV proceedings area}%
     \else
-      \put(54,84){\framebox(506,673){}}%
+      \put(54,84){\framebox(506,655){}}%
       \put(54,76){\tiny IMAV proceedings area}%
     \fi
   }
