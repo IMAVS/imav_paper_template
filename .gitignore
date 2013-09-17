@@ -1,0 +1,16 @@
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.toc
+*.lof
+*.lot
+*.hd
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+# build output (make, make zip)
+/imav*-easychair.pdf
+/IMAV*_template.zip
