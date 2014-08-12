@@ -8,9 +8,10 @@
 *.lof
 *.lot
 *.hd
+*.dvi
 *.synctex.gz
 *.fdb_latexmk
 *.fls
 # build output (make, make zip)
-/imav*-easychair.pdf
-/IMAV*_template.zip
+/imav_template.pdf
+/imav_style_latex.zip

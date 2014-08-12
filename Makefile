@@ -3,22 +3,35 @@
 #   make clean  remove all LaTeX build files, the PDF and the zip
 #   make zip    zip the source files and the built example PDF (no folder in the zip), as distributed to the authors
 
-MAIN    := imav2013-easychair
-ZIPNAME := IMAV2013_template
-SOURCES := $(MAIN).tex imav2013.cls $(MAIN).bib logoEC.pdf throneEC.jpg chairEC.pdf debug.pdf
+MAIN    := imav_template
+ZIPNAME := imav_style_latex
+SOURCES := $(MAIN).tex imav.sty imav_bibliography.bib DelFlyExplorer.eps build.bat kanjix.map
+# build.bat: the build on Windows without make (MiKTeX); kanjix.map: empty, MiKTeX's dvipdfm needs it
+# dvi: latex + dvipdfmx (needed for EPS figures); pdf: pdflatex
+ROUTE   := dvi
 
-LATEX   := pdflatex -interaction=nonstopmode -halt-on-error
-BUILD   := aux log out bbl blg toc lof lot hd synctex.gz fdb_latexmk fls
+BUILD   := aux log out bbl blg toc lof lot hd dvi synctex.gz fdb_latexmk fls
 
 .PHONY: all clean zip
 
 all: $(MAIN).pdf
 
+ifeq ($(ROUTE),dvi)
+LATEX   := latex -interaction=nonstopmode -halt-on-error
 $(MAIN).pdf: $(SOURCES)
 	$(LATEX) $(MAIN)
 	bibtex $(MAIN)
 	$(LATEX) $(MAIN)
 	$(LATEX) $(MAIN)
+	dvipdfmx -q $(MAIN)
+else
+LATEX   := pdflatex -interaction=nonstopmode -halt-on-error
+$(MAIN).pdf: $(SOURCES)
+	$(LATEX) $(MAIN)
+	bibtex $(MAIN)
+	$(LATEX) $(MAIN)
+	$(LATEX) $(MAIN)
+endif
 
 clean:
 	rm -f $(addprefix $(MAIN).,$(BUILD)) $(MAIN).pdf $(ZIPNAME).zip
