@@ -5,7 +5,8 @@
 
 MAIN    := imav_template
 ZIPNAME := imav_style_latex
-SOURCES := $(MAIN).tex imav.sty imav_bibliography.bib DelFlyExplorer.eps build.bat kanjix.map
+SOURCES := $(MAIN).tex imav.sty imav_bibliography.bib BIT_NUS_logo.eps BIT_NUS_logo.pdf build.bat kanjix.map
+# the figure as EPS for latex (ROUTE dvi, build.bat) and as PDF for pdflatex (ROUTE pdf)
 # build.bat: the build on Windows without make (MiKTeX); kanjix.map: empty, MiKTeX's dvipdfm needs it
 # dvi: latex + dvipdfmx (needed for EPS figures); pdf: pdflatex
 ROUTE   := dvi
