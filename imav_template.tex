@@ -1,9 +1,9 @@
 %%%% imav.tex
-% This is the tex-file for the IMAV 2016 conference
+% This is the tex-file for the IMAV 2017 conference
 % for questions / remarks / bugs regarding the files, please contact info@imavs.org
-% You can use this style for your conference, as long as you refer to the IMAV 2016
+% You can use this style for your conference, as long as you refer to the IMAV 2017
 % in a comment similar to this one.
-% Of course, the IMAV 2016 is not liable for any aspects of its use.
+% Of course, the IMAV 2017 is not liable for any aspects of its use.
 
 \documentclass{article}
 % The style file
@@ -11,41 +11,42 @@
 % Use the postscript times font!
 \usepackage{times}
 \usepackage{graphicx}
-\usepackage{algorithm}
-\usepackage{algorithmic}
+%\usepackage{algorithm} % Install algorithm support and uncomment if needed
+%\usepackage{algorithmic} % Install algorithmc support and uncomment if needed
 \usepackage{wasysym}
 %\numberwithin{algorithm}{chapter}
 %\usepackage{algorithmicx}
 % the following package is optional:
 %\usepackage{latexsym}
 
-\title{Article Template for IMAV 2016}
+\title{Article Template for IMAV 2017}
 \author{A. AuthorName1\thanks{Email address(es): contact\_author@mail.com}, S.B. AuthorName2, and C. AuthorName3 \\ University of A, Z road, Paysana}
 
 \begin{document}
 
 \maketitle
+\thispagestyle{empty} % Keep this to remove page number from first page
 
 \begin{abstract}
-This is the article template for the IMAV 2016 to be used with Latex. The abstract should contain a short description of the research. It can maximally be 300 words.
+This is the article template for the IMAV 2017 to be used with Latex. The abstract should contain a short description of the research. It can maximally be 300 words.
 \end{abstract}
 
 \section{Introduction} \label{section:introduction}
-In Latex, you do not have to worry much about the style. It is best to use the `imav\_template.tex'-file as a template. Just remove our text and put your text in its place. Copy the code for figures and tables, and put your data in them. Most comments in this document are best understood by looking at the latex source file. We include a `build.bat' file that transforms the tex-file into a pdf.
+In Latex, you do not have to worry much about the style. It is best to use the `imav\_template.tex'-file as a template. Just remove our text and put your text in its place. Copy the code for figures and tables, and put your data in them. Most comments in this document are best understood by looking at the latex source file. We include a `build.bat' (Windows) and a 'Makefile' (Linux/MacOS) files that transforms the tex-file into a pdf. 
 
 \section{Figures and Tables}
 \subsection{Figures}
-To insert images in Latex, use the template below. The figure caption should be below the figure. Images can be included in colour, since the proceedings will only be released in digital form.
+To insert images in Latex, use the template below. The figure caption should be below the figure. Images can be included in colour, since the proceedings will only be released in digital form. 
 
 \begin{figure}[hbt]
 \centering
-\includegraphics[width=6cm]{BIT_NUS_logo}
+\includegraphics[width=0.6\columnwidth]{IMAV_logo.jpg}
 \caption{Be sure to select the figure caption style.}
-\label{figure:DelFly_Explorer}
+\label{figure:imav_logo}
 \end{figure}
 
 \subsection{Tables}
-When inserting a table, you can choose the appropriate style - below is an example. Put the caption under the table.
+When inserting a table, you can choose the appropriate style - Table~\ref{table:results} below is an example. Put the caption under the table.
 
 \begin{table}[hbt]
 \begin{center}
@@ -71,7 +72,7 @@ Include equations in Latex with the equation environment:
 n = \sqrt{\frac{a}{b}}
 \end{equation}
 
-If used inside the text, use the \$-sign: $a =  b-c$. Only do this for short formulas.
+If used inside the text, use the \$-sign: $a = b-c$. Only do this for short formulas.
 
 \subsection{Units}
 Always use SI units first, possibly adding other units in parentheses.
@@ -79,7 +80,7 @@ Always use SI units first, possibly adding other units in parentheses.
 \section{Referencing}
 
 \subsection{In-document referencing}
-Always introduce a figure as 'Figure X', as in "Figure \ref{figure:DelFly_Explorer} shows the DelFly Explorer.", or "The DelFly Explorer is shown in Figure \ref{figure:DelFly_Explorer}." Subsequently, the word 'figure' can be used. The same goes for tables ('Table \ref{table:results}'). Equations do not have to be introduced this way. If they are referenced to, 'Equation \ref{equation:n}' should be used. Sections are referred to as 'Section \ref{section:introduction}'\footnote{Footnotes are placed like this.}
+Always introduce a figure as 'Figure X', as in "Figure \ref{figure:imav_logo} shows the IMAV logo.", or "The IMAV logo is shown in Figure \ref{figure:imav_logo}." Subsequently, the word 'figure' can be used. The same goes for tables ('Table \ref{table:results}'). Equations do not have to be introduced this way. If they are referenced to, 'Equation \ref{equation:n}' should be used. Sections are referred to as 'Section \ref{section:introduction}'\footnote{Footnotes are placed like this.}
 
 \subsection{Referencing to literature}
  Citations are numbered consecutively with square brackets \cite{DEWAGTER2014} - this is determined by the bibliography style `unsrt'. The references can be described in bibtex format in a separate bib-file (see the bibliography statement close to the end of the tex-file).  The sentence punctuation follows the brackets \cite{NOLFIPOWLIM}. Multiple references \cite{DEWAGTER2014,NOLFIPOWLIM} are each numbered with separate brackets or in sequence as \cite{DEWAGTER2014,NOLFIPOWLIM,BISHOP2006}.
