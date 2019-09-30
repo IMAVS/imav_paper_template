@@ -5,9 +5,9 @@
 
 MAIN    := imav_template
 ZIPNAME := imav_style_latex
-SOURCES := $(MAIN).tex imav.sty imav_bibliography.bib IMAV_logo.jpg build.bat kanjix.map Makefile
-# build.bat: the build on Windows without make; kanjix.map: empty, MiKTeX needs it on Windows; this Makefile
-# goes into the zip as well (from 2017 on the template has one for Linux/macOS)
+SOURCES := $(MAIN).tex imav.sty imav_bibliography.bib IMAV_logo.jpg build.bat Makefile
+# build.bat: the build on Windows without make (no kanjix.map needed: tested on Windows with pdflatex); this
+# Makefile goes into the zip as well (from 2017 on the template has one for Linux/macOS)
 # build.bat: the build on Windows without make (MiKTeX); kanjix.map: empty, MiKTeX's dvipdfm needs it
 # dvi: latex + dvipdfmx (needed for EPS figures); pdf: pdflatex (JPG/PNG/PDF figures)
 ROUTE   := pdf
