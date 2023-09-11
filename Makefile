@@ -4,7 +4,7 @@
 #   make zip    zip the source files and the built example PDF (no folder in the zip), as distributed to the authors
 
 MAIN    := imav_template
-ZIPNAME := imav_style_latex
+ZIPNAME := imav_template_latex
 SOURCES := $(MAIN).tex imav.sty imav_bibliography.bib IMAV_logo.jpg build.bat Makefile
 # build.bat: the build on Windows without make (no kanjix.map needed: tested on Windows with pdflatex); this
 # Makefile goes into the zip as well (from 2017 on the template has one for Linux/macOS)
