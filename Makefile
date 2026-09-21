@@ -5,9 +5,9 @@
 #               (the Word template is distributed separately, not in the zip)
 
 MAIN    := imav_template
-ZIPNAME := Article_Template_for_-IMAV_2025
-SOURCES := $(MAIN).tex imav.sty imav_bibliography.bib IMAV2025_logo.jpg build.bat Makefile
-WORD    := ArticleTemplateIMAV2025.docx
+ZIPNAME := ArticleTemplateIMAV2026
+SOURCES := $(MAIN).tex imav.sty imav_bibliography.bib IMAV2026_logo.png build.bat Makefile
+WORD    := ArticleTemplateIMAV2026.docx
 # build.bat: the build on Windows without make (no kanjix.map needed: tested on Windows with pdflatex); this
 # Makefile goes into the zip as well (from 2017 on the template has one for Linux/macOS)
 # build.bat: the build on Windows without make (MiKTeX); kanjix.map: empty, MiKTeX's dvipdfm needs it
