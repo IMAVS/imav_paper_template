@@ -40,10 +40,18 @@ This is the article template for the IMAV 2027 to be used with Latex. The abstra
 In Latex, you do not have to worry much about the style. It is best to use the `imav\_template.tex'-file as a template. Just remove our text and put your text in its place. Copy the code for figures and tables, and put your data in them. Most comments in this document are best understood by looking at the latex source file. We include a `build.bat' (Windows) and a 'Makefile' (Linux/MacOS) files that transforms the tex-file into a pdf. 
 
 \subsection{Length and review}
-Full papers have 6 to 8 pages, short papers (field results, prototype benchmarks) 4 to 6 pages, including figures and references. Papers are written in English and submitted as PDF. The review is double-blind: submit your paper with the option \texttt{blind} of the style file (see the top of \texttt{imav.sty}), which hides the authors and their affiliations, and remove anything else that identifies the authors. The camera-ready paper is compiled without this option.
+Full papers have 6 to 8 pages, short papers (field results, prototype benchmarks) 4 to 6 pages, including figures and references. Papers are written in English and submitted as PDF. The review is double-blind: submit your paper with the option \texttt{blind} (Section~\ref{section:options}) and remove anything else that identifies the authors. The camera-ready paper is compiled without this option.
 
 \subsection{Page area}
-The proceedings place every page on an A4 page with their own header and footer, and cut off the edges of the page. With the option \texttt{frame} of the style file, a red box shows the area of each page that you may use: all text, figures, tables and footnotes must be inside it. Do not change the page size or the margins of this template. Switch the option off again before you submit.
+The page size is always US letter (8.5 $\times$ 11 inch): the style file sets it, also when another size is asked for. All text, figures, tables and footnotes must be inside the text area of 7.0 $\times$ 9.0 inch that the margins of this template give; only the descenders of the last line (the lower part of letters such as g, p and y) hang just below it. The papers are inserted into the proceedings as they are: each page is placed on an A4 page with the header and footer of the proceedings, and the page is cut around the text area. Do not change the margins.
+
+\subsection{Options} \label{section:options}
+The style file has two options. Switch them on at the top of \texttt{imav.sty}, or where it is loaded:
+\begin{itemize}
+\item \texttt{frame}: draws a red box around the text area of every page (7.0 $\times$ 9.0 inch, with room for the descenders of the last line), to check that everything is inside it. Switch it off again before you submit.
+\item \texttt{blind}: hides the authors, their affiliations and the e-mail footnote for the double-blind review.
+\end{itemize}
+For example: \texttt{\textbackslash usepackage[frame,blind]\{imav\}}.
 
 \section{Figures and Tables}
 \subsection{Figures}
